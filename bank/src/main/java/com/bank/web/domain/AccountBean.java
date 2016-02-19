@@ -1,10 +1,12 @@
 package com.bank.web.domain;
 
+import com.bank.web.util.Constants;
+
 public class AccountBean {
 	// 멤버필드 (멤버변수를 정의한 영역)
 	// 멤버변수는 초기화를 하지 않는다. 지역변수와의 차이점
 	// 멤버젼수는 메소드 바깥에 위치하며 메소드들 사이에서 값을 공유한다. 
-	public static String BANK = "한빛뱅크";
+	//public static String BANK = "한빛뱅크";
 	private int accountNo;
 	private String name;
 	private int money;
@@ -42,7 +44,7 @@ public class AccountBean {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "[ " + this.BANK + " ] " + this.getName() + " : " + this.getAccountNo()
+		return "[ " + Constants.BANK + " ] " + this.getName() + " : " + this.getAccountNo()
 		+ "계좌, 잔고 " + this.getMoney() + "원";
 	}
 }
