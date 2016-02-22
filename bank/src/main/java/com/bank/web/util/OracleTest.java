@@ -18,12 +18,12 @@ public class OracleTest {
 					Constants.ORACLE_PASS
 					);
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM test");
+			rs = stmt.executeQuery("SELECT email FROM emp");
 			String name = null;
 			while (rs.next()) {
-				name = rs.getString("name");
+				name = rs.getString("email");
 			}
-			System.out.println("이름 : "+name);
+			System.out.println("이메일 : "+ name);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
