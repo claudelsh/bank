@@ -1,10 +1,10 @@
-package com.bank.web.service;
+package com.bank.web.mapper;
 
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
 import com.bank.web.domain.MemberVO;
-
-public interface MemberService {
+@Repository
+public interface AccountMapper {
 	public String join(MemberVO member);
 	public MemberVO searchById(String id);
 	public MemberVO[] searchByName(String name);
@@ -12,6 +12,6 @@ public interface MemberService {
 	public String remove(String id);
 	public int countAll();
 	public int searchCountByName(String name);
-	public MemberVO login(MemberVO member);
+	public String login(String id, String pw);
 	public String update(MemberVO member);
 }

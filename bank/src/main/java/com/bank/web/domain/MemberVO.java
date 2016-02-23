@@ -1,6 +1,10 @@
 package com.bank.web.domain;
 
-public class MemberBean {
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+
+@Component
+public class MemberVO {
 	private String userid;
 	private String name;
 	private String password;

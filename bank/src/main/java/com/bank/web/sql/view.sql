@@ -5,19 +5,26 @@ FROM employees;
 SELECT * FROM emp_view;
 -- hr 스키마에 있는 테이블
 SELECT * FROM countries;
-SELECT * FROM country;			-- 나라
+SELECT * FROM country;
+-- 나라
 SELECT * FROM cnt;
-SELECT * FROM departments;	-- 부서
+SELECT * FROM departments;
+-- 부서
 SELECT * FROM dep;
-SELECT * FROM employees;		-- 직원
+SELECT * FROM employees;
+-- 직원
 SELECT * FROM emp;
-SELECT * FROM locations;		-- 지역
+SELECT * FROM locations;
+-- 지역
 SELECT * FROM loc;
-SELECT * FROM jobs;				-- 업무
+SELECT * FROM jobs;
+-- 업무
 SELECT * FROM job;
-SELECT * FROM job_history;		-- 연혁
+SELECT * FROM job_history;
+-- 연혁
 SELECT * FROM job_his;
-SELECT * FROM regions;			-- 위치
+SELECT * FROM regions;
+-- 위치
 SELECT * FROM reg;
 
 DROP VIEW cnt;

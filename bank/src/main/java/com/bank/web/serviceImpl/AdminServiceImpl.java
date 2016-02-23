@@ -1,22 +1,24 @@
 package com.bank.web.serviceImpl;
 
-import com.bank.web.domain.AccountBean;
-import com.bank.web.service.AdminService;
+import org.springframework.stereotype.Service;
 
+import com.bank.web.domain.AccountVO;
+import com.bank.web.service.AdminService;
+@Service
 public class AdminServiceImpl implements AdminService {
 	private int count = 0;
-	private AccountBean[] beans;
+	private AccountVO[] beans;
 
-	public AccountBean[] getBeans() {
+	public AccountVO[] getBeans() {
 		return beans;
 	}
 
-	public void setBeans(AccountBean[] beans) {
+	public void setBeans(AccountVO[] beans) {
 		this.beans = beans;
 	}
 
 	public AdminServiceImpl() {
-		beans = new AccountBean[100];
+		beans = new AccountVO[100];
 	}
 
 	public int getCount() {
@@ -33,7 +35,7 @@ public class AdminServiceImpl implements AdminService {
 		// 나중에 추가되는 값을 오버라이딩하게 된다.
 		// 추가되는 개념으로 코딩하려면 지역변수로 처리하고
 		// 자료구조(컬렉션)을 필드에 선언해야 한다.
-		AccountBean account = new AccountBean();
+		AccountVO account = new AccountVO();
 		account.setName(name);
 		account.setPassword(password);
 		beans[count] = account;
@@ -48,9 +50,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public AccountBean searchAccountByAccountNo(int accountNo) {
+	public AccountVO searchAccountByAccountNo(int accountNo) {
 		// 2. 계좌번호로 해당 계좌 정보 조회
-		AccountBean account = null; // 이 라인에서 account는 인스턴스 개념이 아니라
+		AccountVO account = null; // 이 라인에서 account는 인스턴스 개념이 아니라
 											// 리턴을 받는 타입의 변수이다.
 		for (int i = 0; i < this.getCount(); i++) {
 			if (beans[i].getAccountNo() == accountNo) {
@@ -61,9 +63,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public AccountBean[] searchAccountByName(String name) {
+	public AccountVO[] searchAccountByName(String name) {
 		// 3. 이름으로 계좌 정보 조회
-		AccountBean[] tempBeans = new AccountBean[searchCountByName(name)];
+		AccountVO[] tempBeans = new AccountVO[searchCountByName(name)];
 		int j = 0;
 		for (int i = 0; i < this.getCount(); i++) {
 			if (beans[i].getName().equals(name)) {
