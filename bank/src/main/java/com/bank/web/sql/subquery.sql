@@ -27,10 +27,10 @@ where e.did in (
 	select did from dep d2 where d2.did=90
 );
 
-select e.eid 사원번호, e.ename 사원명, d.did 부서번호, d.dname 부서명
-from emp e, dep d, (
-	select avg(e.sal) as avg_sal
-	from dep d, emp e
-	where d.did = 90 and d.did = e.did
+SELECT e.eid 사원번호, e.ename 사원명, d.did 부서번호, d.dname 부서명
+FROM emp e, dep d, (
+	SELECT avg(e.sal) AS avg_sal
+	FROM dep d, emp e
+	WHERE d.did = 90 AND d.did = e.did
 ) t
-where e.did = d.did and e.sal > t.avg_sal;
+WHERE e.did = d.did AND e.sal > t.avg_sal;

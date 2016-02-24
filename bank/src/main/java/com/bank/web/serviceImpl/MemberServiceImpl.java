@@ -40,18 +40,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String join(MemberVO member) {
+	public int join(MemberVO member) {
 		// 회원가입
-		if (searchById(member.getUserid()) != null) {
-			return "이미 존재하는 ID입니다.";
-		}
-		/*
-		 * MemberBean bean = new MemberBean(); bean = member; beans[count] =
-		 * bean; count++; return bean.toString();
-		 */
-
-		map.put(member.getUserid(), member);
-		return member.getName() + " 회원 가입을 축하드립니다!";
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.insertMember(member);
 	}
 
 	@Override
@@ -159,5 +152,11 @@ public class MemberServiceImpl implements MemberService {
 		// 업데이트
 		map.replace(member.getUserid(), member);
 		return null;
+	}
+	@Override
+	public String existCheck(String userid) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		return mapper.selectUserid(userid);
 	}
 }

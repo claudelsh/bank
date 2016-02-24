@@ -9,5 +9,12 @@
  		select * from member
  		where userid = #{userid} and password = #{password}
  	</select>
-
+ 	<insert id="insertMember" parameterType="com.bank.web.domain.MemberVO" >
+ 		insert into member(userid, password, name, addr, birth)
+ 		values (#{userid}, #{password}, #{name}, #{addr}, #{birth})
+ 	</insert>
+ 	<select id="selectUserid" resultType="string" parameterType="string">
+ 		select userid from member
+ 		where userid = #{userid}
+ 	</select>
  </mapper>

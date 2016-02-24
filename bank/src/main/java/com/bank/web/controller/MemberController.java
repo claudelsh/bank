@@ -31,13 +31,26 @@ public class MemberController {
 			Model model) {
 		System.out.println("넘어온 아이디 " + userid);
 		System.out.println("넘어온 비밀번호 " + password);
-		System.out.println("로그인 버튼을 클릭하여 이 메소드 성공");
-		member.setUserid("kim");
-		member.setPassword("1");
-		member = service.login(member);
-		System.out.println("로그인 후 이름 : " + member.getName());
-		model.addAttribute("name", member.getName());
-		
+		MemberVO member = new MemberVO();
+		String existId = service.existCheck(userid);
+		String message = "", page = "";
+		if (existId == null) {
+			model.addAttribute("message", "아이디가 존재하지 않습니다.");
+			page = "member/loginForm";
+		} else {
+			member.setUserid(userid);
+			member.setPassword(password);
+			member = service.login(member);
+			
+			if (member == null) {
+				message = "비밀번호가 일치하지 않습니다.";
+				page = "member/loginForm";
+			} else {
+				message = member.getName();
+				page = "account/myAccount";
+			}
+		}
+		model.addAttribute("message", message);
 		return "account/myAccount";
 	}
 	
@@ -47,10 +60,27 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public String join(Model model) {
-		member.setUserid("kim");
-		member.setPassword("1");
-		member = service.login(member);
+	public String join(
+			@RequestParam("userid")String userid,
+			@RequestParam("password")String password,
+			@RequestParam("name")String name,
+			@RequestParam("addr")String addr,
+			@RequestParam("birth")String birth,
+			Model model) {
+		member.setUserid(userid);
+		member.setPassword(password);
+		member.setName(name);
+		member.setAddr(addr);
+		member.setBirth(Integer.parseInt(birth));
+		// String 타입을 int 타입으로 변환 - Integer.parseInt()
+		// String.valuseOf() - int 타입을 Spring 타입으로 전환
+		
+		int result = service.join(member);
+		if (result == 1) {
+			model.addAttribute("name", name);
+		} else {
+			System.out.println("회원가입 실패");
+		}
 		System.out.println("로그인 후 이름 : " + member.getName());
 		model.addAttribute("name", member.getName());
 		
