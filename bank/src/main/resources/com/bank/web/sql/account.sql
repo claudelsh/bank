@@ -11,6 +11,14 @@ CREATE TABLE account(
 	accountNo NUMBER,
 	money NUMBER,
 	password NUMBER,
+	userid VARCHAR2(30)
+);
+
+CREATE TABLE account(
+	seq NUMBER PRIMARY KEY,
+	accountNo NUMBER,
+	money NUMBER,
+	password NUMBER,
 	userid VARCHAR2(30),
 	CONSTRAINT account_member_fk
 	FOREIGN KEY(userid)

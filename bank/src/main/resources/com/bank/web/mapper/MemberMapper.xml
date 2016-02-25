@@ -17,4 +17,11 @@
  		select userid from member
  		where userid = #{userid}
  	</select>
+ 	<update id="update" parameterType="com.bank.web.domain.MemberVO" >
+ 		update member set password = #{password}, addr = #{addr}
+ 		where userid = #{userid}
+ 	</update>
+ 	<delete id="deleteMember" parameterType="string">
+ 		delete from member where userid = #{userid}
+ 	</delete>
  </mapper>

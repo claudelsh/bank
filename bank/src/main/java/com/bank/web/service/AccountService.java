@@ -1,5 +1,7 @@
 package com.bank.web.service;
 
+import com.bank.web.domain.AccountVO;
+
 public interface AccountService {
 	// DB 에서 DRUD
 	// create
@@ -15,4 +17,5 @@ public interface AccountService {
 	public String withdraw(int money);
 	// 4. 조회
 	public String search();
+	AccountVO getAccount(String userid);
 }

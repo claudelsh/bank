@@ -3,7 +3,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
- <mapper namespace="com.bank.web.mapper.AccountMapper">
- 
- 
- </mapper>
+<mapper namespace="com.bank.web.mapper.AccountMapper">
+	<select id="selectAccount">
+		Select a.accountNo as accountNo, a.money as money, a.password as password
+		from account a,member m
+		where a.userid = m.userid and m.userid=#{userid}
+	</select>
+</mapper>

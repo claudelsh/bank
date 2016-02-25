@@ -6,15 +6,15 @@
 	<title>회원가입</title>
 </head>
 <body>
-	<div id="Join">
-		<div class="JoinTop">
+	<div id="join">
+		<div class="joinTop">
 			<h2>
 				<p>JOIN</p>
 				<span>회원가입</span>
 			</h2>
 		</div>
 		<div class="JoinCenter">
-			<form action="/member/join" method="get" name="joinForm">
+			<form action="${context}/member/join" method="get" name="joinForm">
 				<fieldset class="joinField">
 					<div class="input_row">
 						<span>아이디 : </span>
@@ -47,11 +47,9 @@
 						</span>
 					</div>
 					<div class="input_button">
-						<a href="${context}/member/loginForm">
-							<span class="input_box">
-								<input type="button" id="joinButton" value="회원가입" onclick="joinMember()"/>
-							</span>
-						</a>
+						<span class="input_box">
+							<input type="button" id="joinButton" value="회원가입" onclick="joinMember()"/>
+						</span>
 					</div>
 				</fieldset>
 			</form>

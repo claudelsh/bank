@@ -43,7 +43,6 @@ public class MemberServiceImpl implements MemberService {
 	public int join(MemberVO member) {
 		// 회원가입
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-		
 		return mapper.insertMember(member);
 	}
 
@@ -91,7 +90,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String remove(String id) {
+	public int remove(String id) {
 		// 3. 회원탈퇴
 		/*for (int i = 0; i < this.getCount(); i++) {
 			if (beans[i].getUserid().equals(id)) {
@@ -102,8 +101,10 @@ public class MemberServiceImpl implements MemberService {
 			}
 		}
 		return "삭제 실패";*/
-		String result = "";
-		return (map.remove(id) != null) ? "삭제 성공" : "삭제 실패";
+//		String result = "";
+//		return (map.remove(id) != null) ? "삭제 성공" : "삭제 실패";
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		return mapper.deleteMember(id);
 	}
 
 	@Override
@@ -148,10 +149,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String update(MemberVO member) {
+	public int update(MemberVO member) {
 		// 업데이트
-		map.replace(member.getUserid(), member);
-		return null;
+		// map.replace(member.getUserid(), member);
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		return mapper.update(member);
 	}
 	@Override
 	public String existCheck(String userid) {
